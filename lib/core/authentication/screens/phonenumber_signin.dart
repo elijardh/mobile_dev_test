@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobiledevtest/app/logic/resource.dart';
 import 'package:mobiledevtest/app/presentations/button.dart';
 import 'package:mobiledevtest/app/presentations/colors.dart';
 import 'package:mobiledevtest/app/presentations/extensions.dart';
@@ -202,6 +203,7 @@ class _PhonenumberSigninScreenState extends State<PhonenumberSigninScreen> {
                 fontSize: 18.sp,
                 mHeight: 35.h,
                 mWidth: 200.w,
+                status: NetworkStatus.SUCCESSFUL,
                 action: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const DashboardScreen()));

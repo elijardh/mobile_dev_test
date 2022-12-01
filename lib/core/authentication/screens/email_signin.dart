@@ -12,7 +12,6 @@ import 'package:mobiledevtest/core/authentication/screens/phonenumber_signin.dar
 import 'package:mobiledevtest/core/authentication/view%20model/auth_viewmodel.dart';
 import 'package:mobiledevtest/core/dashboard/screens/dashboard.dart';
 import 'package:provider/provider.dart';
-import 'package:loader_overlay/loader_overlay.dart';
 
 class EmailSigninScreen extends StatefulWidget {
   const EmailSigninScreen({super.key});
@@ -28,6 +27,7 @@ class _EmailSigninScreenState extends State<EmailSigninScreen> {
   final key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final watch = context.watch<AuthViewmodel>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -176,6 +176,7 @@ class _EmailSigninScreenState extends State<EmailSigninScreen> {
                   fontSize: 18.sp,
                   mHeight: 35.h,
                   mWidth: 200.w,
+                  status: watch.signInResource.ops,
                   action: () {
                     if (key.currentState!.validate()) {
                       signIn();
@@ -263,8 +264,6 @@ class _EmailSigninScreenState extends State<EmailSigninScreen> {
   signIn() async {
     AuthViewmodel viewmodel = context.read<AuthViewmodel>();
 
-    context.loaderOverlay.show();
-
     Map<String, dynamic> data = {
       "username": emailController.text,
       "password": passwordController.text,
@@ -277,12 +276,9 @@ class _EmailSigninScreenState extends State<EmailSigninScreen> {
     await viewmodel.signIn(data);
 
     if (viewmodel.signInResource.ops == NetworkStatus.SUCCESSFUL) {
-      context.loaderOverlay.hide();
       Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const DashboardScreen()));
     } else {
-      context.loaderOverlay.hide();
-
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: NormalText(
               textColor: Colors.white,

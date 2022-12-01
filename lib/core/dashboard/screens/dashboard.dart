@@ -61,7 +61,12 @@ class _DashboardScreenState extends State<DashboardScreen>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset("home".toSVG()),
+                      SvgPicture.asset(
+                        "home".toSVG(),
+                        color: tabController?.index == 0
+                            ? null
+                            : const Color.fromRGBO(193, 189, 189, 1),
+                      ),
                       SizedBox(
                         height: 2.h,
                       ),
@@ -79,7 +84,11 @@ class _DashboardScreenState extends State<DashboardScreen>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset("account".toSVG()),
+                      SvgPicture.asset(
+                        "account".toSVG(),
+                        color:
+                            tabController?.index == 1 ? XColors.orange() : null,
+                      ),
                       SizedBox(
                         height: 2.h,
                       ),
@@ -97,7 +106,11 @@ class _DashboardScreenState extends State<DashboardScreen>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset("apps".toSVG()),
+                      SvgPicture.asset(
+                        "apps".toSVG(),
+                        color:
+                            tabController?.index == 2 ? XColors.orange() : null,
+                      ),
                       SizedBox(
                         height: 2.h,
                       ),
@@ -115,7 +128,11 @@ class _DashboardScreenState extends State<DashboardScreen>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset("settings".toSVG()),
+                      SvgPicture.asset(
+                        "settings".toSVG(),
+                        color:
+                            tabController?.index == 3 ? XColors.orange() : null,
+                      ),
                       SizedBox(
                         height: 2.h,
                       ),

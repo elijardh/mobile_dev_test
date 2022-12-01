@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobiledevtest/app/logic/resource.dart';
 import 'package:mobiledevtest/app/presentations/colors.dart';
 import 'package:mobiledevtest/app/presentations/texts.dart';
 
@@ -14,6 +15,7 @@ class XButton extends StatelessWidget {
   final Widget? buttonIcon;
   final Color? borderColor;
   final Color? textColor;
+  final NetworkStatus status;
 
   const XButton(
       {Key? key,
@@ -24,6 +26,7 @@ class XButton extends StatelessWidget {
       this.buttonRadius,
       this.buttonIcon,
       this.borderColor,
+      required this.status,
       required this.action,
       this.textColor,
       required this.buttonColor})
@@ -52,14 +55,23 @@ class XButton extends StatelessWidget {
             SizedBox(
               width: 10.w,
             ),
-          NormalText(
-            text: buttonName,
-            fontFamily: "Mulish",
-            textAlign: TextAlign.center,
-            textColor: textColor ?? XColors.textColor(),
-            fontSize: fontSize,
-            fontWeight: FontWeight.w700,
-          ),
+          if (status != NetworkStatus.LOADING)
+            NormalText(
+              text: buttonName,
+              fontFamily: "Mulish",
+              textAlign: TextAlign.center,
+              textColor: textColor ?? XColors.textColor(),
+              fontSize: fontSize,
+              fontWeight: FontWeight.w700,
+            )
+          else
+            SizedBox(
+              height: 20.h,
+              width: 20.w,
+              child: const CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            ),
         ],
       ),
     );

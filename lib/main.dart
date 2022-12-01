@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:loader_overlay/loader_overlay.dart';
 import 'package:mobiledevtest/app/logic/network_config.dart';
 import 'package:mobiledevtest/app/presentations/colors.dart';
 import 'package:mobiledevtest/core/authentication/screens/email_signin.dart';
@@ -33,37 +32,35 @@ class MyApp extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(create: (_) => AuthViewmodel()),
           ],
-          child: GlobalLoaderOverlay(
-            child: MaterialApp(
-              title: 'Flutter Test',
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                iconTheme: const IconThemeData(color: Colors.black, size: 15),
+          child: MaterialApp(
+            title: 'Flutter Test',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              iconTheme: const IconThemeData(color: Colors.black, size: 15),
+              backgroundColor: Colors.white,
+              appBarTheme: const AppBarTheme(
+                elevation: 0,
                 backgroundColor: Colors.white,
-                appBarTheme: const AppBarTheme(
-                  elevation: 0,
-                  backgroundColor: Colors.white,
-                ),
-                textTheme: TextTheme(
-                    bodyText1: TextStyle(
-                      fontFamily: "Mulish",
-                      fontSize: 15,
-                      height: 1.0,
-                      fontWeight: FontWeight.w400,
-                      color: XColors.textColor(),
-                    ),
-                    bodyText2: TextStyle(
-                      fontFamily: "Mulish",
-                      fontSize: 15,
-                      height: 1.0,
-                      fontWeight: FontWeight.w400,
-                      color: XColors.textColor(),
-                    )),
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-                primaryColor: XColors.mainColor(),
               ),
-              home: child,
+              textTheme: TextTheme(
+                  bodyText1: TextStyle(
+                    fontFamily: "Mulish",
+                    fontSize: 15,
+                    height: 1.0,
+                    fontWeight: FontWeight.w400,
+                    color: XColors.textColor(),
+                  ),
+                  bodyText2: TextStyle(
+                    fontFamily: "Mulish",
+                    fontSize: 15,
+                    height: 1.0,
+                    fontWeight: FontWeight.w400,
+                    color: XColors.textColor(),
+                  )),
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              primaryColor: XColors.mainColor(),
             ),
+            home: child,
           ),
         );
       },
