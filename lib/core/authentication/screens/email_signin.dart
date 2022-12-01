@@ -271,7 +271,7 @@ class _EmailSigninScreenState extends State<EmailSigninScreen> {
       "deviceIdentifier": "dev-from-mobile",
       "registerAsNewDevice": false,
       "otp": "",
-      "channel": "mobile"
+      "channel": "MOBILE"
     };
 
     await viewmodel.signIn(data);

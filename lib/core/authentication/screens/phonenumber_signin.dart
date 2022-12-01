@@ -107,6 +107,11 @@ class _PhonenumberSigninScreenState extends State<PhonenumberSigninScreen> {
                       controller: phoneController,
                       hintText: "Phone Number",
                       textSize: 14.sp,
+                      suffixIcon: const Icon(
+                        Icons.cancel_outlined,
+                        size: 15,
+                        color: Color.fromRGBO(66, 86, 97, 1),
+                      ),
                       fillColor: const Color.fromRGBO(248, 248, 248, 1),
                     ),
                   ),
